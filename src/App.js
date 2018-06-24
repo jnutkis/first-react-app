@@ -30,19 +30,26 @@ class App extends Component {
   // };
 
   nameChangedHandler = (event, id) => {
+    //Finds Index in Array of the ID Parameter
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
 
+    //Returns the Object found in ID
     const person = {
       ...this.state.persons[personIndex]
     };
 
+    //Sets the name to the Update Value from the Input
     person.name = event.target.value;
 
+    //Grab existing Persons Array
     const persons = [...this.state.persons];
+
+    //Update the Object in Array at the ID Index to the new value based off Input
     persons[personIndex] = person;
 
+    //Update original state with input
     this.setState({
       persons: persons
     });
@@ -98,7 +105,7 @@ class App extends Component {
                 key={index}
                 changed={event => this.nameChangedHandler(event, person.id)}
                 index={index + 1}
-                click={() => this.deletePersonHandler(index)}
+                click={this.deletePersonHandler.bind(this, index)}
               />
             );
           })}
