@@ -3,6 +3,9 @@ import './Person.css';
 const person = props => {
   return (
     <div className="person Person" onClick={props.click}>
+      <div>
+        <small>Index: {props.index}</small>
+      </div>
       <p>My name is {props.name}</p>
       <p>I am {props.age}</p>
       <p>{props.children}</p>
