@@ -3,6 +3,7 @@ import './App.css';
 import Person from './Person/Person';
 import Bio from './Person/James';
 import { UserInput, UserOutput } from './Components/User/User';
+//import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   //The State
@@ -81,7 +82,8 @@ class App extends Component {
   //Render and Vars
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -109,22 +111,9 @@ class App extends Component {
               />
             );
           })}
-          {/* <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this, 'Mouna!')}
-          />
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-            changed={this.nameChangedHandler}
-          /> */}
         </div>
       );
+      style.backgroundColor = 'red';
     }
 
     let bio = null;
@@ -139,10 +128,19 @@ class App extends Component {
 
     //
 
+    let classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+
     //Render the JSX
     return (
       <div className="App">
         <h1>Hi, I'm a react app!</h1>
+        <p className={classes.join(' ')}>Worked!</p>
         <button style={style} onClick={this.togglePersonsHandler}>
           Toggle People
         </button>

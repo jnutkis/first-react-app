@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Person.css';
-const person = props => {
+
+let person = props => {
+  const style = {
+    background: 'red',
+    color: 'white'
+  };
   return (
-    <div className="person Person" onClick={props.click}>
+    <div style={style} className="person Person" onClick={props.click}>
       <div>
         <small>Index: {props.index}</small>
       </div>
